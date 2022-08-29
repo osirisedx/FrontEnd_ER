@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {enableProdMode} from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 enableProdMode();
 declare let $: any;
@@ -11,30 +12,39 @@ declare let $: any;
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService:Title) {
+    this.titleService.setTitle("Porfolio de Eduardo Rodrigues");
+  }
 
   ngOnInit(): void {
     $(document).ready(function() {
       $('#container--horizontal').pagepiling({
-        sectionsColor: ['#f2f2f2','#4bbfc3', 'green','#7baabe','red'],
         scrollingSpeed: 1,
-        anchors:['page1', 'page2', 'page3', 'page4','page5'],
+        anchors:['pagina1', 'pagina2', 'pagina3', 'pagina4','pagina5'],
         menu: '#menu',
-        onLeave: function(index: number, nextIndex: any, direction: string, valor: boolean) {
+        easing: 'swing',
+        navigation: {
+          'textColor': '#000',
+          'bulletsColor': '#000',
+          'position': 'right',
+          'tooltips': ['section1', 'section2', 'section3', 'section4','section5']
+      },
+        onLeave: function(index: number, nextIndex: number, direction: string) {
                   //after leaving section 1
-          if(index == 1 && direction =='down'){
-            $('#menu').addClass('header-hidden');
+          if(index != 0 && direction =='down'){
+            $('#navBar').addClass('header-hidden');
 
+          } else if(index == 2 && direction == 'up'){
+            $('#navBar').removeClass('header-hidden');
+          } else if(index != 2 && nextIndex == 1 && direction == 'up'){
+            $('#navBar').removeClass('header-hidden');
           }
 
-          else if(index == 2 && direction == 'up'){
-            $('#menu').removeClass('header-hidden');
-          }
         }
 
       });
     });
-    
+
   }
 
 

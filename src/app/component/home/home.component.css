@@ -1,0 +1,37 @@
+.header-hidden {
+    background-color: #fff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    padding: 3px 0px;
+}
+
+#menu {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.container-fluid {
+    display: inline;
+}
+
+.section {
+    background-size: cover;
+}
+
+#pagina1 {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(#141e30, #243b55)
+}
+
+#pagina2 {
+    background: red;
+}
+
+#pagina3 {
+    background: green;
+}
